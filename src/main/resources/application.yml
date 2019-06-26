@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: phonebook
+  datasource:
+    url: jdbc:postgresql://localhost:15432/teams
+    username: dbuser
+    password: secret
+  jpa:
+    show-sql: true
