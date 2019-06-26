@@ -42,6 +42,10 @@ repositories {
     maven { url "https://repo.spring.io/milestone" }
 }
 
+test {
+    useJUnitPlatform()
+}
+
 dependencies {
     compile('org.apache.commons:commons-lang3:3.8.1')
     compile('commons-validator:commons-validator:1.4.1')
@@ -57,8 +61,9 @@ dependencies {
     compile('org.liquibase:liquibase-core')
     compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}")
     compile("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
-    compile 'ru.yandex.qatools.embed:postgresql-embedded:2.10'
-    compile group: 'com.squareup.retrofit2', name: 'converter-gson', version: '2.6.0'
+    compile('ru.yandex.qatools.embed:postgresql-embedded:2.10')
+    compile('com.squareup.retrofit2:converter-gson:2.6.0')
+    compile('com.google.guava:guava:28.0-jre')
     runtime('org.postgresql:postgresql')
     testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile('org.junit.jupiter:junit-jupiter:5.4.2')
