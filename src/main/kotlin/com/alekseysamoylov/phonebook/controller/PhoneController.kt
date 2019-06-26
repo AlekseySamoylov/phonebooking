@@ -1,17 +1,18 @@
 package com.alekseysamoylov.phonebook.controller
 
-import com.alekseysamoylov.phonebook.entity.Phone
-import org.springframework.web.bind.annotation.CrossOrigin
+import com.alekseysamoylov.phonebook.model.PhoneDto
+import com.alekseysamoylov.phonebook.service.PhoneService
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/api/phone")
-class PhoneController {
+class PhoneController(@Autowired private val phoneService: PhoneService) {
 
     @GetMapping
-    fun getAll(): Iterable<Phone> {
-        return listOf(Phone("a"), Phone("b"))
+    fun getAllAvailable(): Iterable<PhoneDto> {
+        return phoneService.getAllAvailable()
     }
 }

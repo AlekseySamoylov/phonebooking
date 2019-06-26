@@ -1,8 +1,21 @@
-cd docker/postgresql/
+<h2>Technologies in use:</h2>
+<ul>
+<li>Kotlin</li>
+<li>Gradle</li>
+<li>Spring-boot</li>
+<li>Docker compose</li>
+<li>PostgreSQL</li>
+<li>Liquibase</li>
+<li>Swagger</li>
+<li>JUnit5</li>
+<li>Mockito</li>
+</ul>
 
-docker-compose up --build -d
+<p>NO FE part, because there is not enough time, you can use Swagger-UI for first time</p>
+<a href="http://localhost:8080/api/swagger-ui.html">http://localhost:8080/api/swagger-ui.html</a>
 
-curl https://fonoapi.freshpixl.com/v1/getdevice -XPOST -H 'Accept: application/json' -d 'token=b749770c72143641ba54dd64f0b18c924b64ce253caf0af4&limit=5&device=A8'
+<p>before start, need to run docker container with PostgreSQL</p>
 
+<p>cd docker/postgresql/</p>
 
-b749770c72143641ba54dd64f0b18c924b64ce253caf0af4
+<p>docker-compose up --build -d</p>

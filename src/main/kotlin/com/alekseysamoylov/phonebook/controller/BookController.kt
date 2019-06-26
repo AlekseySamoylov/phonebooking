@@ -1,21 +1,24 @@
 package com.alekseysamoylov.phonebook.controller
 
-import com.alekseysamoylov.phonebook.entity.Phone
-import io.swagger.annotations.ApiOperation
-import io.swagger.annotations.ApiResponse
-import org.springframework.web.bind.annotation.GetMapping
+import com.alekseysamoylov.phonebook.model.PhoneBook
+import com.alekseysamoylov.phonebook.service.PhoneBookService
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RestController
 
 
 @RestController
 @RequestMapping("/api/book")
-class BookController {
+class BookController(@Autowired val phoneBookService: PhoneBookService) {
 
-    @ApiOperation("asdffas")
-    @RequestMapping(value = ["/list"], method= arrayOf(RequestMethod.GET), produces = arrayOf("application/json"))
-    fun getAll(): Iterable<Phone> {
-        return listOf(Phone("a"), Phone("b"))
+    @PostMapping("/book")
+    fun bookPhone(phoneBook: PhoneBook) {
+        phoneBookService.bookPhone(phoneBook)
+    }
+
+    @PostMapping("/return")
+    fun returnPhone(phoneBook: PhoneBook) {
+        phoneBookService.returnPhone(phoneBook)
     }
 }

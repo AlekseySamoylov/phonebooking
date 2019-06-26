@@ -19,3 +19,143 @@ databaseChangeLog:
         - column:
             name: name
             type: varchar(250)
+- changeSet:
+      id: add-phone-table
+      author: Aleksey Samoylov
+      changes:
+          - createTable:
+                tableName: phone
+                columns:
+                    - column:
+                          name: id
+                          type: int
+                          autoIncrement: true
+                          constraints:
+                              primaryKey: true
+                              nullable: false
+                    - column:
+                          name: brand
+                          type: varchar(250)
+                    - column:
+                          name: model
+                          type: varchar(250)
+                    - column:
+                          name: user_id
+                          type: int
+- changeSet:
+      id: add-user-phone-id-constraint
+      author: liquibase-docs
+      changes:
+          - addForeignKeyConstraint:
+                baseColumnNames: user_id
+                baseTableName: phone
+                constraintName: fk_phone_user
+                deferrable: true
+                initiallyDeferred: true
+                onDelete: CASCADE
+                onUpdate: RESTRICT
+                referencedColumnNames: id
+                referencedTableName: users
+- changeSet:
+    id: add-users-1
+    author: Aleksey Samoylov
+    comment: "Some comments go here"
+    changes:
+      - insert:
+          tableName: users
+          columns:
+            - column:
+                name: name
+                value: "Aleksey Samoylov"
+      - insert:
+          tableName: users
+          columns:
+            - column:
+                name: name
+                value: "test user"
+- changeSet:
+    id: add-phone-1
+    author: Aleksey Samoylov
+    comment: "Some comments go here"
+    changes:
+      - insert:
+          tableName: phone
+          columns:
+            - column:
+                name: brand
+                value: "Samsung"
+            - column:
+                name: model
+                value: "Galaxy S9"
+      - insert:
+          tableName: phone
+          columns:
+            - column:
+                name: brand
+                value: "Samsung"
+            - column:
+                name: model
+                value: "Galaxy S8"
+      - insert:
+          tableName: phone
+          columns:
+            - column:
+                name: brand
+                value: "Samsung"
+            - column:
+                name: model
+                value: "Galaxy S7"
+      - insert:
+          tableName: phone
+          columns:
+            - column:
+                name: brand
+                value: "Motorola"
+            - column:
+                name: model
+                value: "Nexus 6"
+      - insert:
+          tableName: phone
+          columns:
+            - column:
+                name: brand
+                value: "LG"
+            - column:
+                name: model
+                value: "Nexus 5X"
+      - insert:
+          tableName: phone
+          columns:
+            - column:
+                name: brand
+                value: "Apple"
+            - column:
+                name: model
+                value: "iPhone X"
+      - insert:
+          tableName: phone
+          columns:
+            - column:
+                name: brand
+                value: "Apple"
+            - column:
+                name: model
+                value: "iPhone 8"
+      - insert:
+          tableName: phone
+          columns:
+            - column:
+                name: brand
+                value: "Apple"
+            - column:
+                name: model
+                value: "iPhone 4s"
+      - insert:
+          tableName: phone
+          columns:
+            - column:
+                name: brand
+                value: "Nokia"
+            - column:
+                name: model
+                value: "3310"
